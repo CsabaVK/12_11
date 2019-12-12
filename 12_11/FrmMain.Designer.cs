@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.utasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.szerkesztésToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -81,14 +82,16 @@
             // szerkesztésToolStripMenuItem
             // 
             this.szerkesztésToolStripMenuItem.Name = "szerkesztésToolStripMenuItem";
-            this.szerkesztésToolStripMenuItem.Size = new System.Drawing.Size(160, 26);
+            this.szerkesztésToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.szerkesztésToolStripMenuItem.Text = "Szerkesztés";
+            this.szerkesztésToolStripMenuItem.Click += new System.EventHandler(this.SzerkesztésToolStripMenuItem_Click);
             // 
             // keresésToolStripMenuItem
             // 
             this.keresésToolStripMenuItem.Name = "keresésToolStripMenuItem";
-            this.keresésToolStripMenuItem.Size = new System.Drawing.Size(160, 26);
+            this.keresésToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.keresésToolStripMenuItem.Text = "Keresés";
+            this.keresésToolStripMenuItem.Click += new System.EventHandler(this.KeresésToolStripMenuItem_Click);
             // 
             // idegenvezetőToolStripMenuItem
             // 
@@ -206,10 +209,10 @@
             this.lblMa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lblMa.Location = new System.Drawing.Point(12, 282);
             this.lblMa.Name = "lblMa";
-            this.lblMa.Size = new System.Drawing.Size(98, 23);
+            this.lblMa.Size = new System.Drawing.Size(181, 23);
             this.lblMa.TabIndex = 3;
             this.lblMa.Text = "###ma###:";
-            this.lblMa.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblMa.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // FrmMain
             // 
@@ -220,6 +223,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvTurak);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmMain";
             this.Text = "Form1";
