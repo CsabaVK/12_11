@@ -46,7 +46,7 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblMa = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTurak)).BeginInit();
             this.SuspendLayout();
@@ -201,22 +201,22 @@
             this.label1.Text = "Túrák:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label2
+            // lblMa
             // 
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(12, 282);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(98, 23);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "###ma###:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblMa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblMa.Location = new System.Drawing.Point(12, 282);
+            this.lblMa.Name = "lblMa";
+            this.lblMa.Size = new System.Drawing.Size(98, 23);
+            this.lblMa.TabIndex = 3;
+            this.lblMa.Text = "###ma###:";
+            this.lblMa.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(647, 540);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblMa);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvTurak);
             this.Controls.Add(this.menuStrip1);
@@ -250,7 +250,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblMa;
     }
 }
 

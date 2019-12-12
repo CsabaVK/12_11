@@ -14,29 +14,40 @@ namespace _12_11
     public partial class FrmMain : Form
     {
         OleDbConnection conn;
+        DateTime ma = new DateTime(2015, 10, 11);
         public FrmMain()
         {
             conn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=utiroda.accdb");
             InitializeComponent();
             FillDgv();
+            this.Icon = Properties.Resources.logo;
+            lblMa.Text = ma.ToString("yyyy. MMMM dd.");
         }
 
         private void FillDgv()
         {
+            dgvTurak.Rows.Clear();
             conn.Open();
 
-            var cmd = new OleDbCommand("SELECT T_KÓD, HOVÁ, KEZDET, VÉG, IDEGENVEZETŐ.NÉV, SZÁLLÁS.NÉV, ÁR " +
+            var cmd = new OleDbCommand( "SELECT T_KÓD, ÚTVONAL.HOVÁ, KEZDET, VÉGE, IDEGENVEZETŐ.NÉV, SZÁLLÁS.NÉV, ÁR " +
                 "FROM (((TÚRA " +
-                "INNER JOIN IDEGENVEZETŐ ON VEZETŐ = I_KÓD) " +
-                //"INNER JOIN SZÁLLÁS ON SZÁLLÁS = SZ_KÓD) " +
-                //"INNER JOIN ÚTVONAL ON ÚTVONAL = ÚT_KÓD) " +
-                "GROUP BY T_KÓD, HOVÁ, KEZDET, VÉG, IDEGENVEZETŐ.NÉV, SZÁLLÁS.NÉV, ÁR;", conn);
+                "INNER JOIN IDEGENVEZETŐ ON TÚRA.VEZETŐ = IDEGENVEZETŐ.I_KÓD) " +
+                "INNER JOIN ÚTVONAL ON TÚRA.ÚTVONAL = ÚTVONAL.ÚT_KÓD) " +
+                "INNER JOIN SZÁLLÁS ON TÚRA.SZÁLLÁS = SZÁLLÁS.SZ_KÓD) " +
+                $"WHERE KEZDET > #{ma.ToString("yyyy-MM-")+"01"}#" +
+                "GROUP BY T_KÓD, ÚTVONAL.HOVÁ, KEZDET, VÉGE, IDEGENVEZETŐ.NÉV, SZÁLLÁS.NÉV, ÁR " +
+                "ORDER BY KEZDET ASC;", conn);
 
             var r = cmd.ExecuteReader();
 
             while (r.Read())
             {
-                dgvTurak.Rows.Add(r[0], r[1], r[2], r[3], r[4], r[5], r[6]);
+                dgvTurak.Rows.Add(
+                    r[0], r[1],
+                    r.GetDateTime(2).ToString("yyyy.MM.dd."),
+                    r.GetDateTime(3).ToString("yyyy.MM.dd."),
+                    r[4], r[5], 
+                    string.Format("{0:N0} ", int.Parse(r.GetString(6))));
             }
 
             conn.Close();
