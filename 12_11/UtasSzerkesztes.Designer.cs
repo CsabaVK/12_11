@@ -1,4 +1,6 @@
-﻿namespace _12_11
+﻿using System;
+
+namespace _12_11
 {
     partial class UtasSzerkesztes
     {
@@ -33,15 +35,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.tbKod = new System.Windows.Forms.TextBox();
+            this.tbNev = new System.Windows.Forms.TextBox();
+            this.rtbCim = new System.Windows.Forms.RichTextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.keresésToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mentésToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.törlésToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TsmiTorles = new System.Windows.Forms.ToolStripMenuItem();
             this.üresŰrlapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -82,28 +84,29 @@
             this.label4.Text = "Jelentkezés:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // textBox1
+            // tbKod
             // 
-            this.textBox1.Location = new System.Drawing.Point(118, 33);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 4;
+            this.tbKod.Location = new System.Drawing.Point(118, 33);
+            this.tbKod.Name = "tbKod";
+            this.tbKod.ReadOnly = true;
+            this.tbKod.Size = new System.Drawing.Size(100, 20);
+            this.tbKod.TabIndex = 4;
+            this.tbKod.TextChanged += new System.EventHandler(this.tbKod_TextChanged);
             // 
-            // textBox2
+            // tbNev
             // 
-            this.textBox2.Location = new System.Drawing.Point(118, 67);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(263, 20);
-            this.textBox2.TabIndex = 5;
+            this.tbNev.Location = new System.Drawing.Point(118, 67);
+            this.tbNev.Name = "tbNev";
+            this.tbNev.Size = new System.Drawing.Size(263, 20);
+            this.tbNev.TabIndex = 5;
             // 
-            // richTextBox1
+            // rtbCim
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(118, 105);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(263, 118);
-            this.richTextBox1.TabIndex = 6;
-            this.richTextBox1.Text = "";
+            this.rtbCim.Location = new System.Drawing.Point(118, 105);
+            this.rtbCim.Name = "rtbCim";
+            this.rtbCim.Size = new System.Drawing.Size(263, 118);
+            this.rtbCim.TabIndex = 6;
+            this.rtbCim.Text = "";
             // 
             // comboBox1
             // 
@@ -122,7 +125,7 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.keresésToolStripMenuItem,
             this.mentésToolStripMenuItem,
-            this.törlésToolStripMenuItem,
+            this.TsmiTorles,
             this.üresŰrlapToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(384, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -148,16 +151,18 @@
             this.mentésToolStripMenuItem.Size = new System.Drawing.Size(160, 61);
             this.mentésToolStripMenuItem.Text = "Mentés";
             this.mentésToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.mentésToolStripMenuItem.Click += new System.EventHandler(this.MentésToolStripMenuItem_Click);
             // 
-            // törlésToolStripMenuItem
+            // TsmiTorles
             // 
-            this.törlésToolStripMenuItem.Enabled = false;
-            this.törlésToolStripMenuItem.Image = global::_12_11.Properties.Resources.delete;
-            this.törlésToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.törlésToolStripMenuItem.Name = "törlésToolStripMenuItem";
-            this.törlésToolStripMenuItem.Size = new System.Drawing.Size(160, 61);
-            this.törlésToolStripMenuItem.Text = "Törlés";
-            this.törlésToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.TsmiTorles.Enabled = false;
+            this.TsmiTorles.Image = global::_12_11.Properties.Resources.delete;
+            this.TsmiTorles.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.TsmiTorles.Name = "TsmiTorles";
+            this.TsmiTorles.Size = new System.Drawing.Size(160, 61);
+            this.TsmiTorles.Text = "Törlés";
+            this.TsmiTorles.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.TsmiTorles.Click += new System.EventHandler(this.TörlésToolStripMenuItem_Click);
             // 
             // üresŰrlapToolStripMenuItem
             // 
@@ -174,9 +179,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(551, 289);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.rtbCim);
+            this.Controls.Add(this.tbNev);
+            this.Controls.Add(this.tbKod);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -192,21 +197,26 @@
 
         }
 
+        private void tbKod_TextChanged(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.TextBox tbKod;
+        private System.Windows.Forms.TextBox tbNev;
+        private System.Windows.Forms.RichTextBox rtbCim;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem keresésToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mentésToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem törlésToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem TsmiTorles;
         private System.Windows.Forms.ToolStripMenuItem üresŰrlapToolStripMenuItem;
     }
 }

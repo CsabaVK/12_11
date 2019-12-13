@@ -50,5 +50,72 @@ namespace _12_11
             var valami = new UtasKereses();
             valami.ShowDialog();
         }
+
+        private void MentésToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(tbKod.Text))
+            {
+                //INSERT --> tbKod
+                //NEV! CIM!
+
+                if (string.IsNullOrWhiteSpace(tbNev.Text))
+                {
+                    MessageBox.Show("A 'NÉV' mező kitöltése kötelező!");
+                    return;
+                }
+                else if (string.IsNullOrWhiteSpace(rtbCim.Text))
+                {
+                    MessageBox.Show("A 'CIM' mező kitöltése kötelező!");
+
+                }
+                else
+                {
+                    conn.Open();
+                    var adapter = new OleDbDataAdapter()
+                    {
+                        InsertCommand = new OleDbCommand("INSERT INTO UTAS (NÉV, CÍM, JELENTKEZIK) VALUES " +
+                        $"('{tbNev.Text}','{rtbCim.Text}', {comboBox1.SelectedItem});", conn)
+                    };
+                    adapter.InsertCommand.ExecuteNonQuery();
+                    var cmd = new OleDbCommand("SELECT TOP ' U_KÓD FROM UTAS ORDER BY U_KÓD DESC", conn);
+                    var r = cmd.ExecuteReader();
+                    r.Read();
+                    tbKod.Text = r[0].ToString();
+                    conn.Close();
+                }
+            }
+            else
+            {
+                //UPDATE
+            }
+            
+            
+            //INSERT/UPDATE
+            //NEV - CIM
+            //INSERT --> tbKod
+        }
+
+        private void TörlésToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var valasz = MessageBox.Show("Biztosan törölni szeretnéd a rekordot? ",
+                "TÖRLÉS",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+            if (valasz == DialogResult.Yes)
+            {
+                //DELETE
+                MessageBox.Show("Adatok törölve!");
+
+                tbKod.Text = "";
+                tbNev.Text = "";
+                rtbCim.Text = "";
+                TsmiTorles.Enabled = false;
+            }
+        }
+
+        private void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+            //TsmiTorles.Enabled = !string.IsNullOrWhiteSpace();
+        }
     }
 }
