@@ -1,6 +1,6 @@
-﻿namespace _12_11
+﻿namespace WFA191211
 {
-    partial class UtasSzerkesztes
+    partial class FrmUtas
     {
         /// <summary>
         /// Required designer variable.
@@ -112,7 +112,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(100, 21);
             this.comboBox1.TabIndex = 7;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
+            //this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
             // 
             // menuStrip1
             // 
@@ -138,7 +138,7 @@
             this.keresésToolStripMenuItem.Size = new System.Drawing.Size(160, 61);
             this.keresésToolStripMenuItem.Text = "Keresés";
             this.keresésToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.keresésToolStripMenuItem.Click += new System.EventHandler(this.KeresésToolStripMenuItem_Click);
+            //this.keresésToolStripMenuItem.Click += new System.EventHandler(this.KeresésToolStripMenuItem_Click);
             // 
             // mentésToolStripMenuItem
             // 
